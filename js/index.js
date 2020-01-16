@@ -144,7 +144,7 @@ appendNav.setAttribute("href", "#");
 appendNav.textContent = "More...";
 appendNav.style.color = "green"
 
-navBar.append(appendNav)
+navBar.appendChild(appendNav)
 
 let prependNav = document.createElement("A");
 prependNav.setAttribute("href", "#");
