@@ -39,4 +39,100 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+//modifications to the header
+
+let headers = document.querySelectorAll('a');
+// headers[0].textContent = siteContent["nav"]["nav-item-1"];
+// headers[1].textContent = siteContent["nav"]["nav-item-2"];
+// headers[2].textContent = siteContent["nav"]["nav-item-3"];
+// headers[3].textContent = siteContent["nav"]["nav-item-4"];
+// headers[4].textContent = siteContent["nav"]["nav-item-5"];
+// headers[5].textContent = siteContent["nav"]["nav-item-6"];
+
+/* CLEAN ABSTRACTION OF ABOVE CODE */
+[...headers].forEach(  /*the [...placeholder] syntax is used to turn dom selectors other than queryselectors into object arrays*/
+  (a, idx) => (a.textContent = siteContent["nav"][`nav-item-${1 + idx}`])
+)
+
+// headers[0].style.color = "green";
+// headers[1].style.color = "green";
+// headers[2].style.color = "green";
+// headers[3].style.color = "green";
+// headers[4].style.color = "green";
+// headers[5].style.color = "green";
+
+/* CLEAN ABSTRACTION OF ABOVE CODE */
+headers.forEach(
+  (a) => {
+    return (a.style.color = "green");
+  }
+)
+
+//modifications to the cta section
+
+document.getElementById("cta-img").setAttribute('src', siteContent["cta"]["img-src"]);
+
+document.querySelector("h1").textContent = siteContent["cta"]["h1"];
+
+document.querySelector('button').textContent = siteContent["cta"]["button"];
+
+//modifications to the main-content section
+
+let featuresBoxHeader = document.querySelectorAll(".text-content *");
+
+// featuresBoxHeader[0].textContent = siteContent["main-content"]["features-h4"];
+// featuresBoxHeader[1].textContent = siteContent["main-content"]["about-h4"];
+// featuresBoxHeader[2].textContent = siteContent["main-content"]["services-h4"];
+// featuresBoxHeader[3].textContent = siteContent["main-content"]["product-h4"];
+// featuresBoxHeader[4].textContent = siteContent["main-content"]["vision-h4"];
+
+
+// let featureBoxContent = document.querySelectorAll(".text-content p");
+
+// featureBoxContent[0].textContent = siteContent["main-content"]["features-content"];
+// featureBoxContent[1].textContent = siteContent["main-content"]["about-content"];
+// featureBoxContent[2].textContent = siteContent["main-content"]["services-content"];
+// featureBoxContent[3].textContent = siteContent["main-content"]["product-content"];
+// featureBoxContent[4].textContent = siteContent["main-content"]["vision-content"];
+
+/*MUCH MORE ABSTRACTED CODE OF THE ABOVE EFFECTS */
+
+let featureHeaderData = Object.entries(siteContent["main-content"]).map(element => element[1]).filter(e => e !== 'img/mid-page-accent.jpg');
+
+featuresBoxHeader.forEach((e, idx) => e.textContent = featureHeaderData[idx]);
+
+document.getElementById("middle-img").setAttribute(['src'], siteContent["main-content"]["middle-img-src"]);
+
+//modifications to the contact section
+
+// let contactHeader = document.querySelector(".contact h4");
+
+// contactHeader.textContent = siteContent["contact"]["contact-h4"];
+
+// let contactInfo = document.querySelectorAll(".contact p");
+
+
+// contactInfo[0].textContent = siteContent["contact"]["address"];
+// contactInfo[1].textContent = siteContent["contact"]["phone"];
+// contactInfo[2].textContent = siteContent["contact"]["email"];
+
+let elements = document.querySelectorAll(".contact *");
+//convert contact info into an array of key value pairs
+let data = Object.entries(siteContent["contact"]).map(element => element[1]) 
+console.log(data)
+//entries method compreeses object to array of key value pairs and the map function as follows gets the value of the key value pair
+
+
+
+
+elements.forEach((e, idx) => e.textContent = data[idx]);
+
+
+
+
+
+//modifications to the footer section
+
+document.querySelector("footer p").textContent = siteContent["footer"]["copyright"];
