@@ -38,10 +38,10 @@ const siteContent = {
 };
 
 // Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"]);
+document.getElementById("logo-img").setAttribute('src', siteContent["nav"]["img-src"]);
 
 //modifications to the header
+
 
 let headers = document.querySelectorAll('a');
 // headers[0].textContent = siteContent["nav"]["nav-item-1"];
@@ -62,6 +62,8 @@ let headers = document.querySelectorAll('a');
 // headers[3].style.color = "green";
 // headers[4].style.color = "green";
 // headers[5].style.color = "green";
+
+
 
 /* CLEAN ABSTRACTION OF ABOVE CODE */
 headers.forEach(
@@ -87,10 +89,7 @@ let featuresBoxHeader = document.querySelectorAll(".text-content *");
 // featuresBoxHeader[2].textContent = siteContent["main-content"]["services-h4"];
 // featuresBoxHeader[3].textContent = siteContent["main-content"]["product-h4"];
 // featuresBoxHeader[4].textContent = siteContent["main-content"]["vision-h4"];
-
-
 // let featureBoxContent = document.querySelectorAll(".text-content p");
-
 // featureBoxContent[0].textContent = siteContent["main-content"]["features-content"];
 // featureBoxContent[1].textContent = siteContent["main-content"]["about-content"];
 // featureBoxContent[2].textContent = siteContent["main-content"]["services-content"];
@@ -108,12 +107,8 @@ document.getElementById("middle-img").setAttribute(['src'], siteContent["main-co
 //modifications to the contact section
 
 // let contactHeader = document.querySelector(".contact h4");
-
 // contactHeader.textContent = siteContent["contact"]["contact-h4"];
-
 // let contactInfo = document.querySelectorAll(".contact p");
-
-
 // contactInfo[0].textContent = siteContent["contact"]["address"];
 // contactInfo[1].textContent = siteContent["contact"]["phone"];
 // contactInfo[2].textContent = siteContent["contact"]["email"];
@@ -124,15 +119,36 @@ let data = Object.entries(siteContent["contact"]).map(element => element[1])
 console.log(data)
 //entries method compreeses object to array of key value pairs and the map function as follows gets the value of the key value pair
 
-
-
-
 elements.forEach((e, idx) => e.textContent = data[idx]);
-
-
-
-
 
 //modifications to the footer section
 
 document.querySelector("footer p").textContent = siteContent["footer"]["copyright"];
+
+
+//APPEND AND PREPEND additions
+
+// let appendText = document.createTextNode("More");
+// let prependText = document.createTextNode("Home");
+
+
+
+// let appT = document.createTextNode("More");
+// appendNav.appendChild(appT);
+// document.querySelectorAll("a *").appendChild(appendNav)
+
+let navBar = document.querySelector('nav');
+
+let appendNav = document.createElement("A");
+appendNav.setAttribute("href", "#");
+appendNav.textContent = "More...";
+appendNav.style.color = "green"
+
+navBar.append(appendNav)
+
+let prependNav = document.createElement("A");
+prependNav.setAttribute("href", "#");
+prependNav.textContent = "Home";
+prependNav.style.color = "green"
+
+navBar.prepend(prependNav)
