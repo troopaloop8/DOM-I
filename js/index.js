@@ -113,10 +113,12 @@ document.getElementById("middle-img").setAttribute(['src'], siteContent["main-co
 // contactInfo[1].textContent = siteContent["contact"]["phone"];
 // contactInfo[2].textContent = siteContent["contact"]["email"];
 
+//ABSTRACTED VERSION OF ABOVE CODE
+
 let elements = document.querySelectorAll(".contact *");
 //convert contact info into an array of key value pairs
 let data = Object.entries(siteContent["contact"]).map(element => element[1]) 
-console.log(data)
+
 //entries method compreeses object to array of key value pairs and the map function as follows gets the value of the key value pair
 
 elements.forEach((e, idx) => e.textContent = data[idx]);
@@ -127,15 +129,6 @@ document.querySelector("footer p").textContent = siteContent["footer"]["copyrigh
 
 
 //APPEND AND PREPEND additions
-
-// let appendText = document.createTextNode("More");
-// let prependText = document.createTextNode("Home");
-
-
-
-// let appT = document.createTextNode("More");
-// appendNav.appendChild(appT);
-// document.querySelectorAll("a *").appendChild(appendNav)
 
 let navBar = document.querySelector('nav');
 
